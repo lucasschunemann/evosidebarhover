@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drop Down Sidebar Menu</title>
+    <link rel="stylesheet" href="css\style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="dark-theme">
+    <!-- Adicionando a classe de tema padrão -->
+    <div class="sidebar">
+      <div class="logo-details">
+        <img src="src\images\logomin.png" alt="Company Logo" />
+        <span class="logo_name">Evolutize | ERP</span>
+      </div>
+      <div class="sidebar-content" id="sidebar-content">
+        <ul class="nav-links" id="menu-container">
+          <!-- Itens fixos do menu -->
+          <li class="fixed-menu-item">
+            <div class="iocn-link">
+              <a href="#">
+                <i class="bx bxs-home"></i>
+                <span class="link_name">Home</span>
+              </a>
+            </div>
+          </li>
+          <li class="fixed-menu-item">
+            <div class="iocn-link">
+              <a href="#">
+                <i class="bx bxs-dashboard"></i>
+                <span class="link_name">Dashboard</span>
+              </a>
+            </div>
+          </li>
+          <li class="fixed-menu-item">
+            <div class="iocn-link">
+              <a href="#">
+                <i class="bx bxs-star"></i>
+                <span class="link_name">Favoritos</span>
+              </a>
+            </div>
+          </li>
+          <li class="fixed-menu-item">
+            <div class="iocn-link">
+              <a href="#">
+                <i class="bx bxs-time-five"></i>
+                <span class="link_name">Telas Recentes</span>
+              </a>
+            </div>
+          </li>
+          <!-- Novo divisor entre menu fixo e menu carregado -->
+          <li class="fixed-dynamic-divider"></li>
+          <!-- Menu items will be inserted here dynamically -->
+        </ul>
+      </div>
+    </div>
+    <section class="home-section">
+      <div class="home-content">
+        <div class="top-right-buttons">
+          <button class="theme-toggle" onclick="toggleTheme()">Tema</button>
+          <button class="sidebar-toggle" onclick="toggleSidebar()">
+            Sidebar
+          </button>
+        </div>
+      </div>
+      <div id="content"></div>
+    </section>
+    <script src="js\main.js"></script>
+  </body>
+</html>
