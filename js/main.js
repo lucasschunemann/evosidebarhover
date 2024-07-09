@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       const menuContainer = document.getElementById("menu-container");
       menuContainer.innerHTML += generateMenu(data.Nos);
-      initializeCustomScroll();
       initializeHover();
+      initializeManualScroll();
+      initializeCloseOnClickOutside();
+      disableHorizontalScrollOnMobile();
     })
     .catch((error) => console.error("Erro ao carregar o menu:", error));
 });
@@ -59,52 +61,6 @@ function generateSubMenu(children) {
   });
   html += "</ul>";
   return html;
-}
-
-function initializeCustomScroll() {
-  const sidebarContent = document.getElementById("sidebar-content");
-  const menuContainer = document.querySelector(".nav-links");
-  let isDown = false;
-  let startY;
-  let scrollTop;
-
-  sidebarContent.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startY = e.pageY - sidebarContent.offsetTop;
-    scrollTop = menuContainer.offsetTop;
-  });
-
-  sidebarContent.addEventListener("mouseleave", () => {
-    isDown = false;
-  });
-
-  sidebarContent.addEventListener("mouseup", () => {
-    isDown = false;
-  });
-
-  sidebarContent.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const y = e.pageY - sidebarContent.offsetTop;
-    const walk = (y - startY) * 3;
-    menuContainer.style.top = `${scrollTop + walk}px`;
-    constrainScroll();
-  });
-
-  sidebarContent.addEventListener("wheel", (event) => {
-    event.preventDefault();
-    menuContainer.style.top = `${menuContainer.offsetTop - event.deltaY}px`;
-    constrainScroll();
-  });
-
-  function constrainScroll() {
-    const maxScroll = sidebarContent.clientHeight - menuContainer.scrollHeight;
-    if (parseInt(menuContainer.style.top) > 0) {
-      menuContainer.style.top = "0px";
-    } else if (parseInt(menuContainer.style.top) < maxScroll) {
-      menuContainer.style.top = `${maxScroll}px`;
-    }
-  }
 }
 
 function initializeHover() {
@@ -162,4 +118,81 @@ function toggleSidebar() {
   const homeSection = document.querySelector(".home-section");
   sidebar.classList.toggle("hide");
   homeSection.classList.toggle("expand");
+}
+
+function toggleMobileMenu() {
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.querySelector(".overlay");
+  sidebar.classList.toggle("show");
+  overlay.classList.toggle("show");
+}
+
+function initializeManualScroll() {
+  const sidebarContent = document.getElementById("sidebar-content");
+  const menuContainer = document.querySelector(".nav-links");
+  let isDown = false;
+  let startY;
+  let scrollTop;
+
+  sidebarContent.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startY = e.pageY - sidebarContent.offsetTop;
+    scrollTop = menuContainer.offsetTop;
+  });
+
+  sidebarContent.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+
+  sidebarContent.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+
+  sidebarContent.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const y = e.pageY - sidebarContent.offsetTop;
+    const walk = (y - startY) * 3; // Multiplicador ajustável
+    menuContainer.style.top = `${scrollTop + walk}px`;
+    constrainScroll();
+  });
+
+  sidebarContent.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    menuContainer.style.top = `${menuContainer.offsetTop - event.deltaY}px`;
+    constrainScroll();
+  });
+
+  function constrainScroll() {
+    const maxScroll = sidebarContent.clientHeight - menuContainer.scrollHeight;
+    if (parseInt(menuContainer.style.top) > 0) {
+      menuContainer.style.top = "0px";
+    } else if (parseInt(menuContainer.style.top) < maxScroll) {
+      menuContainer.style.top = `${maxScroll}px`;
+    }
+  }
+}
+
+function initializeCloseOnClickOutside() {
+  const overlay = document.querySelector(".overlay");
+  overlay.addEventListener("click", function () {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.remove("show");
+    overlay.classList.remove("show");
+  });
+}
+
+function disableHorizontalScrollOnMobile() {
+  function checkAndDisableScroll() {
+    if (window.innerWidth <= 768) {
+      document.documentElement.style.overflowX = "hidden";
+      document.body.style.overflowX = "hidden";
+    } else {
+      document.documentElement.style.overflowX = "";
+      document.body.style.overflowX = "";
+    }
+  }
+
+  checkAndDisableScroll();
+  window.addEventListener("resize", checkAndDisableScroll);
 }

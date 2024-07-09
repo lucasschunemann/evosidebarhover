@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Drop Down Sidebar Menu</title>
-    <link rel="stylesheet" href="css\style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -15,11 +15,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body class="dark-theme">
+    <div class="overlay"></div>
     <!-- Adicionando a classe de tema padrão -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
       <div class="logo-details">
-        <img src="src\images\logomin.png" alt="Company Logo" />
+        <img src="src/images/logomin.png" alt="Company Logo" />
         <span class="logo_name">Evolutize | ERP</span>
+        <button class="close-btn" onclick="toggleMobileMenu()">
+          <i class="bx bx-x"></i>
+        </button>
       </div>
       <div class="sidebar-content" id="sidebar-content">
         <ul class="nav-links" id="menu-container">
@@ -64,6 +68,10 @@
     </div>
     <section class="home-section">
       <div class="home-content">
+        <button
+          class="bx bx-menu mobile-menu-toggle"
+          onclick="toggleMobileMenu()"
+        ></button>
         <div class="top-right-buttons">
           <button class="theme-toggle" onclick="toggleTheme()">Tema</button>
           <button class="sidebar-toggle" onclick="toggleSidebar()">
@@ -73,6 +81,6 @@
       </div>
       <div id="content"></div>
     </section>
-    <script src="js\main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

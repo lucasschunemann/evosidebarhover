@@ -1,52 +1,74 @@
 /* Google Fonts Import Link */
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Barlow", sans-serif;
 }
-body {
+
+body,
+html {
+  overflow-x: hidden; /* Garante que não haja rolagem horizontal */
+  width: 100%;
   background: #f0f2f5;
   transition: background 0.3s ease, color 0.3s ease;
 }
+
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 240px;
-  background: #333; /* Cor escura */
+  background: #333;
   z-index: 100;
   transition: all 0.5s ease;
   box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
 }
+
 .sidebar.hide {
   left: -240px;
 }
+
 .logo-details {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: #222; /* Cor escura */
+  background: #222;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
 }
+
 .logo-details img {
   height: 50px;
   width: 50px;
   object-fit: cover;
   margin-right: 15px;
 }
+
 .logo-details .logo_name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
-  color: #ecf0f1; /* Cor clara */
+  color: #ecf0f1;
 }
+
+.close-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .sidebar-content {
-  height: calc(100% - 80px); /* Ajustado para considerar o logo */
-  padding-top: 20px; /* Espaço para o logo */
+  height: calc(100% - 80px);
+  padding-top: 20px;
   position: relative;
 }
+
 .nav-links {
   padding: 0;
   position: absolute;
@@ -54,57 +76,68 @@ body {
   left: 0;
   width: 100%;
 }
+
 .sidebar .nav-links li {
   list-style: none;
   transition: all 0.3s ease;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
+  display: block;
   align-items: center;
 }
+
 .sidebar .nav-links li:hover {
-  background: #444; /* Cor escura */
+  background: #444;
   box-shadow: inset 6px 0 0 #6d57a5;
 }
+
 .sidebar .nav-links li .iocn-link {
   display: flex;
   align-items: center;
-  padding: 15px 20px;
+  padding: 10px 20px;
   color: white;
-  justify-content: space-between; /* Ajuste para espaço entre elementos */
+  justify-content: space-between;
   width: 100%;
 }
+
 .sidebar .nav-links li a {
   display: flex;
   align-items: center;
   text-decoration: none;
   color: white;
-  flex: 1; /* Usar flex para ajustar largura */
+  flex: 1;
   overflow: hidden;
 }
+
 .sidebar .nav-links li a .link_name {
   font-size: 14px;
   font-weight: 500;
-  margin-left: 15px;
-  white-space: normal; /* Permitir quebra de linha */
-  flex: 1; /* Usar flex para ajustar largura */
+  margin-left: 10px;
+  white-space: normal;
+  flex: 1;
 }
+
 .sidebar .nav-links li .arrow {
   font-size: 18px;
   transition: transform 0.3s ease;
 }
+
 .sidebar .nav-links .fixed-menu-item {
-  background: #333; /* Cor escura */
+  background: #333;
 }
+
 .sidebar .nav-links .fixed-menu-item:hover {
-  background: #444; /* Mesma cor de fundo ao passar o mouse */
+  background: #444;
 }
+
 .sidebar .nav-links .dynamic-menu-item {
-  background: #333; /* Cor escura */
+  background: #333;
 }
+
 .sidebar .nav-links .dynamic-menu-item:hover {
-  background: #444; /* Cor de fundo ao passar o mouse */
+  background: #444;
 }
+
 .sidebar .nav-links li .sub-menu {
   display: none;
   background: #272727;
@@ -114,13 +147,16 @@ body {
   width: 200px;
   box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
 }
+
 .sidebar .nav-links li:hover > .sub-menu {
   display: block;
 }
+
 .sidebar .nav-links li .sub-menu li {
   border-bottom: 1px solid #444;
-  background: #333; /* Cor escura */
+  background: #333;
 }
+
 .sidebar .nav-links li .sub-menu a {
   color: white;
   font-size: 14px;
@@ -128,9 +164,11 @@ body {
   display: block;
   transition: background 0.3s ease;
 }
+
 .sidebar .nav-links li .sub-menu a:hover {
-  background: #444; /* Cor escura */
+  background: #444;
 }
+
 .sidebar .profile-details {
   position: fixed;
   bottom: 0;
@@ -138,70 +176,68 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #222; /* Cor escura */
+  background: #222;
   padding: 20px;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .sidebar .profile-details .profile-content {
   display: flex;
   align-items: center;
 }
+
 .sidebar .profile-details img {
   height: 50px;
   width: 50px;
   object-fit: cover;
   margin-right: 15px;
 }
+
 .sidebar .profile-details .profile_name,
 .sidebar .profile-details .job {
-  color: #ecf0f1; /* Cor clara */
-  font-size: 16px;
+  color: #ecf0f1;
+  font-size: 14px;
   font-weight: 500;
 }
+
 .sidebar .profile-details .job {
-  font-size: 14px;
+  font-size: 12px;
 }
+
 .home-section {
   position: relative;
-  background: #ffffff; /* Fundo branco para o conteúdo */
-  height: 100vh;
+  background: #ffffff;
+  min-height: 100vh;
   left: 240px;
   width: calc(100% - 240px);
   transition: all 0.5s ease;
   padding: 20px;
 }
+
 .home-section.expand {
   left: 0;
   width: 100%;
 }
+
 .home-section .home-content {
-  height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
-.home-section .home-content .bx-menu,
-.home-section .home-content .text {
-  color: #11101d;
-  font-size: 35px;
-}
+
 .home-section .home-content .bx-menu {
-  margin: 0 15px;
+  font-size: 35px;
   cursor: pointer;
-}
-.home-section .home-content .text {
-  font-size: 26px;
-  font-weight: 600;
+  margin-right: 10px;
+  display: none; /* Esconde o botão de menu no desktop */
 }
 
 /* Botões no canto superior direito */
 .top-right-buttons {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   display: flex;
   gap: 10px;
 }
+
 .top-right-buttons button {
   padding: 10px 15px;
   font-size: 14px;
@@ -210,149 +246,231 @@ body {
   border-radius: 5px;
   transition: background 0.3s ease, color 0.3s ease;
 }
+
 .top-right-buttons .theme-toggle {
   background-color: #ffffff;
   color: #333;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .top-right-buttons .theme-toggle:hover {
   background-color: #e7e7e7;
 }
+
 .top-right-buttons .sidebar-toggle {
   background-color: #6d57a5;
   color: #ffffff;
 }
+
 .top-right-buttons .sidebar-toggle:hover {
   background-color: #4b3d73;
 }
 
-@media (max-width: 400px) {
-  .sidebar .nav-links li .sub-menu {
-    display: none;
-  }
+/* Estilos para o botão de menu em dispositivos móveis */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Estilos para a sobreposição */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.overlay.show {
+  display: block;
+}
+
+@media (max-width: 768px) {
   .sidebar {
-    width: 70px;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+  }
+  .sidebar.show {
+    left: 0;
   }
   .home-section {
-    left: 70px;
-    width: calc(100% - 70px);
-    z-index: 100;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+  .home-section.expand {
+    left: 0;
+    width: 100%;
+  }
+  .top-right-buttons {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+  .home-section .home-content .bx-menu {
+    display: block; /* Mostrar o botão de menu no mobile */
+  }
+  .sidebar .nav-links {
+    padding: 0;
+  }
+  .sidebar .nav-links li {
+    display: block;
+  }
+  .sidebar .nav-links li .sub-menu {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+  .sidebar .nav-links li .sub-menu a {
+    padding-left: 30px;
+  }
+  .sidebar .nav-links li .sub-menu li .sub-menu a {
+    padding-left: 50px;
+  }
+  .close-btn {
+    display: block;
   }
 }
 
-/* Estilos para abrir submenus com hover */
-.sidebar .nav-links li:hover > .sub-menu {
-  display: block;
-}
-.sidebar .nav-links li .sub-menu li:hover > .sub-menu {
-  display: block;
-}
-
-/* Estilos adicionais */
 .fixed-dynamic-divider {
-  height: 2px; /* Aumenta a altura do divisor */
+  height: 2px;
   border: none;
   background: #6d57a5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  pointer-events: none; /* Remove interatividade */
+  pointer-events: none;
 }
+
 .dynamic-menu-item .menu-divider {
-  height: 30px; /* Aumenta a altura do divisor */
+  height: 30px;
   margin: 20px 0;
-  border-bottom: 2px dashed #6d57a5; /* Linha tracejada */
-  border-top: 2px dashed #6d57a5; /* Linha tracejada no topo */
+  border-bottom: 2px dashed #6d57a5;
+  border-top: 2px dashed #6d57a5;
 }
+
 .favorite-button {
   background: none;
   border: none;
-  color: #ffa500; /* Cor amarelo/laranja */
+  color: #ffa500;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute; /* Mudança para posicionamento absoluto */
-  right: 10px; /* Posição à direita */
-  top: 50%; /* Centralizar verticalmente */
-  transform: translateY(-50%); /* Ajuste para centralizar */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 24px;
   height: 24px;
   transition: background 0.3s ease, color 0.3s ease;
 }
+
 .favorite-button:hover {
-  background: rgba(
-    255,
-    165,
-    0,
-    0.2
-  ); /* Fundo amarelo/laranja claro ao passar o mouse */
+  background: rgba(255, 165, 0, 0.2);
   border-radius: 50px;
 }
+
 .favorite-button i {
   font-size: 16px;
 }
+
 .favorite-button.favorited i {
-  color: #ffa500; /* Cor amarelo/laranja quando favoritado */
+  color: #ffa500;
 }
 
 /* Tema Claro */
 body.light-theme {
   color: #333;
 }
+
 body.light-theme .sidebar {
   color: #333;
 }
+
 body.light-theme .logo-details {
   background: #f9f9f9;
   color: #333;
 }
+
 body.light-theme .nav-links li {
-  border-bottom: 1px solid #ccc; /* Cor de borda mais suave */
+  border-bottom: 1px solid #ccc;
 }
+
 body.light-theme .nav-links li:hover {
   background: #e7e7e7;
   box-shadow: inset 6px 0 0 #6d57a5;
 }
+
 body.light-theme .nav-links li .iocn-link,
 body.light-theme .nav-links li a {
   color: #333;
 }
+
 body.light-theme .nav-links .fixed-menu-item {
   background: #ffffff;
 }
+
 body.light-theme .nav-links .fixed-menu-item:hover {
-  background: #e7e7e7; /* Adicionando hover para tema claro */
+  background: #e7e7e7;
 }
+
 body.light-theme .nav-links .dynamic-menu-item {
   background: #f9f9f9;
 }
+
 body.light-theme .nav-links .dynamic-menu-item:hover {
-  background: #e7e7e7; /* Adicionando hover para tema claro */
+  background: #e7e7e7;
 }
+
 body.light-theme .nav-links li .sub-menu {
   background: #f0f0f0;
 }
+
 body.light-theme .nav-links li .sub-menu li {
   background: #f9f9f9;
 }
+
 body.light-theme .nav-links li .sub-menu li {
-  border-bottom: 1px solid #ccc; /* Cor de borda mais suave */
+  border-bottom: 1px solid #ccc;
 }
+
 body.light-theme .nav-links li .sub-menu li:hover {
-  background: #e7e7e7; /* Adicionando hover para submenu no tema claro */
+  background: #e7e7e7;
 }
+
 body.light-theme .nav-links li .sub-menu a {
   color: #333;
 }
+
 body.light-theme .nav-links li .sub-menu a:hover {
-  background: #e7e7e7; /* Adicionando hover para links do submenu no tema claro */
+  background: #e7e7e7;
 }
+
 body.light-theme .profile-details {
   background: #f9f9f9;
   color: #333;
 }
+
 body.light-theme .favorite-button i {
   color: #ffa500;
 }
+
 body.light-theme .favorite-button:hover {
   background: rgba(255, 165, 0, 0.2);
 }
@@ -361,38 +479,48 @@ body.light-theme .favorite-button:hover {
 body.dark-theme {
   color: black;
 }
+
 body.dark-theme .sidebar {
   background: #333;
   color: white;
 }
+
 body.dark-theme .logo-details {
   background: #222;
   color: white;
 }
+
 body.dark-theme .nav-links li {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 body.dark-theme .nav-links li:hover {
   background: #444;
   box-shadow: inset 6px 0 0 #6d57a5;
 }
+
 body.dark-theme .nav-links li .iocn-link,
 body.dark-theme .nav-links li a {
   color: white;
 }
+
 body.dark-theme .nav-links .fixed-menu-item {
   background: #333;
 }
+
 body.dark-theme .nav-links .dynamic-menu-item {
   background: #333;
 }
+
 body.dark-theme .profile-details {
   background: #222;
   color: white;
 }
+
 body.dark-theme .favorite-button i {
   color: #ffa500;
 }
+
 body.dark-theme .favorite-button:hover {
   background: rgba(255, 165, 0, 0.2);
 }
