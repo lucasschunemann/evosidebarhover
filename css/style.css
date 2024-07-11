@@ -271,7 +271,7 @@ html {
   display: none;
   background: none;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 24px;
   cursor: pointer;
 }
